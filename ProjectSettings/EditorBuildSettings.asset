@@ -4,4 +4,24 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scene/System.unity
+  - enabled: 1
+    path: Assets/Scene/Loading.unity
+  - enabled: 1
+    path: Assets/Scene/Title.unity
+  - enabled: 1
+    path: Assets/Scene/Menu.unity
+  - enabled: 1
+    path: Assets/Scene/Strengthen.unity
+  - enabled: 1
+    path: Assets/Scene/Main.unity
+  - enabled: 1
+    path: Assets/Scene/StageSelect.unity
+  - enabled: 1
+    path: Assets/Scene/MultiMain.unity
+  - enabled: 1
+    path: Assets/Scene/Clear.unity
+  - enabled: 1
+    path: Assets/Scene/Over.unity
