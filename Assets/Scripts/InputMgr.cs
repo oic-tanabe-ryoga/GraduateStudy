@@ -77,7 +77,6 @@ public class InputMgr : MonoBehaviour {
 		fire2 = Input.GetButton("Fire2");
 		fire3 = Input.GetButton("Fire3");
 		fire4 = Input.GetButton("Fire4");
-
 	}
 
 	/// <summary>

@@ -47,6 +47,11 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\GlobalVariable.cs" />
      <Compile Include="Assets\Scripts\InputMgr.cs" />
+     <Compile Include="Assets\Scripts\SavaData\Cript.cs" />
+     <Compile Include="Assets\Scripts\SavaData\GameData.cs" />
+     <Compile Include="Assets\Scripts\SavaData\JsonMapper.cs" />
+     <Compile Include="Assets\Scripts\SavaData\SavableSingleton.cs" />
+     <Compile Include="Assets\Scripts\SavaData\SingletonMonoBehaviour.cs" />
      <Compile Include="Assets\Scripts\SystemMgr.cs" />
      <Compile Include="Assets\Scripts\TestInputMgr.cs" />
  <Reference Include="UnityEngine.UI">
@@ -54,6 +59,9 @@
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="LitJson">
+ <HintPath>C:/Users/14del/Desktop/GraduateStudy/GraduateStudy/Assets/Scripts/SavaData/LitJson.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
