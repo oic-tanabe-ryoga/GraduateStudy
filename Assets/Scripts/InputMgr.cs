@@ -21,6 +21,10 @@ public class InputMgr : MonoBehaviour {
 	public static bool fire2;
 	public static bool fire3;
 	public static bool fire4;
+	public static bool fire5;
+	public static bool fire6;
+	public static bool fire7;
+	public static bool fire8;
 	public static Vector3 mousePosition;
 	public static float mouseWheelScroll;
 	public static float mouseX;
@@ -32,12 +36,6 @@ public class InputMgr : MonoBehaviour {
 	public static float horizontalRaw;
 	public static float verticalRaw;
 
-	// Use this for initialization
-	void Start () {
-
-	}
-
-	// Update is called once per frame
 	void Update () {
 		InputBottonTypeA ();
 		InputBottonTypeB ();
@@ -77,6 +75,11 @@ public class InputMgr : MonoBehaviour {
 		fire2 = Input.GetButton("Fire2");
 		fire3 = Input.GetButton("Fire3");
 		fire4 = Input.GetButton("Fire4");
+
+		fire5 = Input.GetButtonDown("Fire1");
+		fire6 = Input.GetButtonDown("Fire2");
+		fire7 = Input.GetButtonDown("Fire3");
+		fire8 = Input.GetButtonDown("Fire4");
 	}
 
 	/// <summary>

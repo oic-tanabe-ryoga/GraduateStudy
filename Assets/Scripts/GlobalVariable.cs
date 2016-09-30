@@ -6,6 +6,7 @@ using System.Collections;
 public class GlobalVariable : MonoBehaviour {
 	static public bool sceneMoveUsabale;
 
+
 	void Awake(){
 		IsInitialization ();
 	}

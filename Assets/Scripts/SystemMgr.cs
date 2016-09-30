@@ -72,7 +72,7 @@ public class SystemMgr : MonoBehaviour {
 		}
 	}
 	void TestSceneMgr(){
-		if (Input.GetButtonDown("Fire2")||Input.GetKeyDown(KeyCode.Space)) {
+		if (InputMgr.fire6==true||Input.GetKeyDown(KeyCode.Space)) {
 			switch (sceneNo_p) {
 			case sceneNo.Title:
 				SceneManager.UnloadScene ("Title");
