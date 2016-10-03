@@ -13,13 +13,16 @@ public class TitleMgr : MonoBehaviour {
 	public enum TitleSelectType{
 		Start,
 		Continue,
+		End,
 	}public static TitleSelectType titleSelectType_g;
 	private bool canInputUsabale;
 	private TimeSpan allowTime=new TimeSpan(0,0,1);
 	private TimeSpan pastTime;
 	private DateTime reloadTime;
+	public static int testSaveData;
 	void Start () {
 		TitleInitialize ();
+		testSaveData=GameData.captureNo;
 	}
 	void Update () {
 		switch (titleTiming_p) {
@@ -74,7 +77,7 @@ public class TitleMgr : MonoBehaviour {
 	/// タイトル選択肢移動
 	/// </summary>
 	void TitleInput(){
-		if (InputMgr.vertical <= -0.5f || InputMgr.vertical >=0.5f) {
+		if (InputMgr.vertical <= -0.5f) {
 			canInputUsabale = false;
 			this.reloadTime = DateTime.Now;
 			switch (titleSelectType_g) {
@@ -82,12 +85,35 @@ public class TitleMgr : MonoBehaviour {
 				titleSelectType_g = TitleSelectType.Continue;
 				break;
 			case TitleSelectType.Continue:
+				titleSelectType_g = TitleSelectType.End;
+				break;
+			case TitleSelectType.End:
 				titleSelectType_g = TitleSelectType.Start;
 				break;
 			}
 		}
+		if (InputMgr.vertical >= 0.5f) {
+			canInputUsabale = false;
+			this.reloadTime = DateTime.Now;
+			switch (titleSelectType_g) {
+			case TitleSelectType.Start:
+				titleSelectType_g = TitleSelectType.End;
+				break;
+			case TitleSelectType.Continue:
+				titleSelectType_g = TitleSelectType.Start;
+				break;
+			case TitleSelectType.End:
+				titleSelectType_g = TitleSelectType.Continue;
+				break;
+			}
+		}
+		TestSaveData ();
 	}
 	void TestText(){
-		this.GetComponent<GUIText>().text = "TestText"+titleSelectType_g;
+		this.GetComponent<GUIText>().text = "TestText"+titleSelectType_g+"Test"+testSaveData;
+	}
+	void TestSaveData(){
+		if (InputMgr.fire8)
+			testSaveData++;
 	}
 }

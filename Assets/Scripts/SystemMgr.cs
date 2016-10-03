@@ -8,7 +8,6 @@ public class SystemMgr : MonoBehaviour {
 
 	private enum sceneNo{
 		Title,
-		Loading,
 		Menu,
 		Strengthen,
 		Main,
@@ -16,6 +15,7 @@ public class SystemMgr : MonoBehaviour {
 		StageSelect,
 		Clear,
 		Over,
+		Loading,
 	}sceneNo sceneNo_p;
 
 	void Awake () {
