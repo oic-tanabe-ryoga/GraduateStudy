@@ -1,38 +1,38 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 //　ゲームプログラマー３年制コース　田邉崚雅
 //　タイトル画面管理クラス
 public class TitleMgr : MonoBehaviour {
-
 	private enum TitleTiming{
 		ProcessingStart,
 		ProcessingNow,
 		ProcessingEnd,
 	}TitleTiming titleTiming_p;
-
 	public enum TitleSelectType{
 		Start,
 		Continue,
 	}public static TitleSelectType titleSelectType_g;
-
 	private bool canInputUsabale;
-
+	private TimeSpan allowTime=new TimeSpan(0,0,1);
+	private TimeSpan pastTime;
+	private DateTime reloadTime;
 	void Start () {
 		TitleInitialize ();
 	}
-	
 	void Update () {
 		switch (titleTiming_p) {
 		case TitleTiming.ProcessingStart:
-			TitleStartSet ();
+			titleTiming_p = TitleTiming.ProcessingNow;
 			break;
 
 		case TitleTiming.ProcessingNow:
 			if (canInputUsabale == true) {
 				TitleInput ();
 			} else {
-				Invoke ("TitleTimeControl", 1.0f);
+				TitleTimeControl ();
+				ReturnInitilize ();
 			}
 			TestText ();
 			break;
@@ -42,21 +42,41 @@ public class TitleMgr : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// タイトル初期化
+	/// </summary>
 	void TitleInitialize (){
 		titleTiming_p = TitleTiming.ProcessingStart;
 		titleSelectType_g = TitleSelectType.Start;
 		canInputUsabale = true;
 	}
-	void TitleStartSet(){
-		titleSelectType_g = TitleSelectType.Start;
-		titleTiming_p = TitleTiming.ProcessingNow;
-	}
+
+	/// <summary>
+	/// 連打防止
+	/// </summary>
 	void TitleTimeControl(){
-		canInputUsabale = true;
+		pastTime = DateTime.Now - this.reloadTime;
+		if(pastTime > allowTime){
+			canInputUsabale = true;
+		}
 	}
+
+	/// <summary>
+	/// 元の位置に戻ったときに初期化
+	/// </summary>
+	void ReturnInitilize(){
+		if (InputMgr.vertical == 0.0f) {
+			canInputUsabale = true;
+		}
+	}
+
+	/// <summary>
+	/// タイトル選択肢移動
+	/// </summary>
 	void TitleInput(){
 		if (InputMgr.vertical <= -0.5f || InputMgr.vertical >=0.5f) {
 			canInputUsabale = false;
+			this.reloadTime = DateTime.Now;
 			switch (titleSelectType_g) {
 			case TitleSelectType.Start:
 				titleSelectType_g = TitleSelectType.Continue;
