@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿
+//　ゲームプログラマー３年制コース　田邉崚雅
+//　テスト表示
+
+using UnityEngine;
 using System.Collections;
 
 public class TestInputMgr : MonoBehaviour {

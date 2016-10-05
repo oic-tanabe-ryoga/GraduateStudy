@@ -1,8 +1,10 @@
-﻿using UnityEngine;
-using System.Collections;
-
+﻿
 //　ゲームプログラマー３年制コース　田邉崚雅
 //　インプット管理クラス
+
+using UnityEngine;
+using System.Collections;
+
 public class InputMgr : MonoBehaviour {
 	public static bool mouseLeftButton;
 	public static bool mouseRightButton;

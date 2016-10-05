@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿
+//　ゲームプログラマー３年制コース　田邉崚雅
+//　タイトル画面管理クラス
+
+using UnityEngine;
 using System.Collections;
 using System;
 
-//　ゲームプログラマー３年制コース　田邉崚雅
-//　タイトル画面管理クラス
 public class TitleMgr : MonoBehaviour {
 	private enum TitleTiming{
 		ProcessingStart,
@@ -109,6 +111,10 @@ public class TitleMgr : MonoBehaviour {
 		}
 		TestSaveData ();
 	}
+
+	/// <summary>
+	/// テスト用テキスト
+	/// </summary>
 	void TestText(){
 		this.GetComponent<GUIText>().text = "TestText"+titleSelectType_g+"Test"+testSaveData;
 	}

@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿
+//　ゲームプログラマー３年制コース　田邉崚雅
+//　システムマネージャー管理クラス
+
+using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-//　ゲームプログラマー３年制コース　田邉崚雅
-//　システムマネージャー管理クラス
 public class SystemMgr : MonoBehaviour {
 
 	private enum sceneNo{
@@ -75,36 +77,50 @@ public class SystemMgr : MonoBehaviour {
 		if (InputMgr.fire6==true||Input.GetKeyDown(KeyCode.Space)) {
 			switch (sceneNo_p) {
 			case sceneNo.Title:
+				if (TitleMgr.titleSelectType_g == TitleMgr.TitleSelectType.Start ||
+				   TitleMgr.titleSelectType_g == TitleMgr.TitleSelectType.Continue)
+					sceneNo_p = sceneNo.Menu;
 				SceneManager.UnloadScene ("Title");
 				break;
 			case sceneNo.Loading:
 				SceneManager.UnloadScene ("Loading");
 				break;
 			case sceneNo.Menu:
+				if (MenuMgr.menuSelectType_g == MenuMgr.MenuSelectType.Main) {
+					sceneNo_p = sceneNo.Main;
+				} else if (MenuMgr.menuSelectType_g == MenuMgr.MenuSelectType.Multi) {
+					sceneNo_p = sceneNo.MultiMain;
+				} else if (MenuMgr.menuSelectType_g == MenuMgr.MenuSelectType.CharStrengthen) {
+					sceneNo_p = sceneNo.Strengthen;
+				} else if (MenuMgr.menuSelectType_g == MenuMgr.MenuSelectType.Title) {
+					sceneNo_p = sceneNo.Title;
+				}
 				SceneManager.UnloadScene ("Menu");
 				break;
 			case sceneNo.Strengthen:
+				sceneNo_p = sceneNo.Menu;
 				SceneManager.UnloadScene ("Strengthen");
 				break;
 			case sceneNo.Main:
+				sceneNo_p = sceneNo.StageSelect;
 				SceneManager.UnloadScene ("Main");
 				break;
 			case sceneNo.MultiMain:
+				sceneNo_p = sceneNo.Over;
 				SceneManager.UnloadScene ("MultiMain");
 				break;
 			case sceneNo.StageSelect:
+				sceneNo_p = sceneNo.Clear;
 				SceneManager.UnloadScene ("StageSelect");
 				break;
 			case sceneNo.Clear:
+				sceneNo_p = sceneNo.Menu;
 				SceneManager.UnloadScene ("Clear");
 				break;
 			case sceneNo.Over:
+				sceneNo_p = sceneNo.Menu;
 				SceneManager.UnloadScene ("Over");
 				break;
-			}
-				sceneNo_p++;
-			if (sceneNo_p > sceneNo.Over) {
-				sceneNo_p = sceneNo.Title;
 			}
 				GlobalVariable.sceneMoveUsabale = true;
 		}
