@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\SavaData\SingletonMonoBehaviour.cs" />
      <Compile Include="Assets\Scripts\SystemMgr.cs" />
      <Compile Include="Assets\Scripts\TestInputMgr.cs" />
+     <Compile Include="Assets\Scripts\TestPlayerMove.cs" />
      <Compile Include="Assets\Scripts\TitleMgr.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
