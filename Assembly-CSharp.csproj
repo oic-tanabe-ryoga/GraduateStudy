@@ -47,12 +47,14 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\GlobalVariable.cs" />
      <Compile Include="Assets\Scripts\InputMgr.cs" />
+     <Compile Include="Assets\Scripts\MainMgr.cs" />
      <Compile Include="Assets\Scripts\MenuMgr.cs" />
      <Compile Include="Assets\Scripts\SavaData\Cript.cs" />
      <Compile Include="Assets\Scripts\SavaData\GameData.cs" />
      <Compile Include="Assets\Scripts\SavaData\JsonMapper.cs" />
      <Compile Include="Assets\Scripts\SavaData\SavableSingleton.cs" />
      <Compile Include="Assets\Scripts\SavaData\SingletonMonoBehaviour.cs" />
+     <Compile Include="Assets\Scripts\StrengthMgr.cs" />
      <Compile Include="Assets\Scripts\SystemMgr.cs" />
      <Compile Include="Assets\Scripts\TestInputMgr.cs" />
      <Compile Include="Assets\Scripts\TestPlayerMove.cs" />

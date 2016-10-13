@@ -15,5 +15,4 @@ public class GlobalVariable : MonoBehaviour {
 	void IsInitialization(){
 		sceneMoveUsabale = true;
 	}
-
 }
