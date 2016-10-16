@@ -221,3 +221,11 @@ Temp
 *.unityproj
 *.sln
 *.userprefs
+
+# add ignored files
+Library
+Temp
+*.pidb
+*.sln
+*.unityproj
+*.userprefs
