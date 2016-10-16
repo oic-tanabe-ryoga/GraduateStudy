@@ -66,6 +66,9 @@
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
+ <Reference Include="Live2DUnity">
+ <HintPath>C:/Users/14del/Desktop/GraduateStudy/GraduateStudy/Assets/Live2D/Live2DUnity.dll</HintPath>
+ </Reference>
  <Reference Include="Photon3Unity3D">
  <HintPath>C:/Users/14del/Desktop/GraduateStudy/GraduateStudy/Assets/Plugins/Photon3Unity3D.dll</HintPath>
  </Reference>
@@ -74,9 +77,6 @@
  </Reference>
  <Reference Include="LitJson">
  <HintPath>C:/Users/14del/Desktop/GraduateStudy/GraduateStudy/Assets/Scripts/SavaData/LitJson.dll</HintPath>
- </Reference>
- <Reference Include="Live2DUnity">
- <HintPath>C:/Users/14del/Desktop/GraduateStudy/GraduateStudy/Assets/Live2D/Live2DUnity.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
