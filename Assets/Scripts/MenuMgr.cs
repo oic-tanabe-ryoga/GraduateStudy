@@ -8,9 +8,9 @@ using System;
 
 public class MenuMgr : MonoBehaviour {
 	private enum MenuTiming{
-		ProcessingStart,
-		ProcessingNow,
-		ProcessingEnd,
+		ProcessStart,
+		ProcessNow,
+		ProcessEnd,
 	}MenuTiming menuTiming_p;
 	public enum MenuSelectType{
 		Main,
@@ -24,22 +24,16 @@ public class MenuMgr : MonoBehaviour {
 	private TimeSpan pastTime;
 	private DateTime reloadTime;
 
-
-	void Awake(){
-		SetPlayerData ();
-	}
-
 	void Start () {
 		MenuInitialize ();
-		menuTiming_p = MenuTiming.ProcessingStart;
 	}
 	
 	void Update () {
 		switch (menuTiming_p) {
-		case MenuTiming.ProcessingStart:
-			menuTiming_p = MenuTiming.ProcessingNow;
+		case MenuTiming.ProcessStart:
+			menuTiming_p = MenuTiming.ProcessNow;
 			break;
-		case MenuTiming.ProcessingNow:
+		case MenuTiming.ProcessNow:
 			if (canInputUsabale == true) {
 				MenuInput ();
 			} else {
@@ -48,25 +42,8 @@ public class MenuMgr : MonoBehaviour {
 			}
 			TestText ();
 			break;
-		case MenuTiming.ProcessingEnd:
-			break;
-		}
-	}
-
-
-	/// <summary>
-	/// プレイヤーデータのセット
-	/// </summary>
-	void SetPlayerData(){
-		switch (TitleMgr.titleSelectType_g) {
-		case TitleMgr.TitleSelectType.Start:
-			GameData.Reset ();
-			Debug.Log ("データ初期化");
-			break;
-		case TitleMgr.TitleSelectType.Continue:
-			GameData.captureNo = TitleMgr.testSaveData;
-			GameData.Save ();
-			Debug.Log ("データロード");
+		case MenuTiming.ProcessEnd:
+			SystemMgr.sceneMoveUsabale = true;
 			break;
 		}
 	}
@@ -75,7 +52,7 @@ public class MenuMgr : MonoBehaviour {
 	/// タイトル初期化
 	/// </summary>
 	void MenuInitialize (){
-		menuTiming_p = MenuTiming.ProcessingStart;
+		menuTiming_p = MenuTiming.ProcessStart;
 		menuSelectType_g = MenuSelectType.Main;
 		canInputUsabale = true;
 	}
@@ -139,10 +116,13 @@ public class MenuMgr : MonoBehaviour {
 				break;
 			}
 		}
+		if (InputMgr.fire6 == true || Input.GetKeyDown (KeyCode.Space)) {
+			menuTiming_p = MenuTiming.ProcessEnd;
+		}
 	}
 
 	/// <summary>
-	/// 
+	/// メニューテスト用表示
 	/// </summary>
 	void TestText(){
 		this.GetComponent<GUIText>().text = "TestText"+menuSelectType_g;

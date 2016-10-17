@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class SystemMgr : MonoBehaviour {
 
-	private enum sceneNo{
+	private enum SceneNo{
 		Title,
 		Menu,
 		Strengthen,
@@ -18,111 +18,107 @@ public class SystemMgr : MonoBehaviour {
 		Clear,
 		Over,
 		Loading,
-	}sceneNo sceneNo_p;
-
+	}SceneNo sceneNo_p;
+	public enum SystemTiming{
+		ProcessStart,
+		ProcessNow,
+		ProcessEnd,
+	}public static SystemTiming systemTiming_g;
+	public static bool sceneMoveUsabale;
+		
 	void Awake () {
 		IsInitialization ();
 	}
 
 	void Update () {
-		if (GlobalVariable.sceneMoveUsabale == true) {
-			IsSceneManagement ();
-			GlobalVariable.sceneMoveUsabale = false;
+		switch (systemTiming_g) {
+		case SystemTiming.ProcessStart:
+			ProcessStart ();
+			break;
+		case SystemTiming.ProcessNow:
+			if (sceneMoveUsabale == true) {
+				IsSceneManagement ();
+				sceneMoveUsabale = false;
+			}
+			break;
+		case SystemTiming.ProcessEnd:
+			SceneManager.UnloadScene ("Title");
+			break;
 		}
-		TestSceneMgr ();
 	}
 
 	/// <summary>
 	/// 初期化
 	/// </summary>
 	void IsInitialization(){
-		sceneNo_p = sceneNo.Title;
+		sceneNo_p = SceneNo.Title;
+		systemTiming_g = SystemTiming.ProcessStart;
+		sceneMoveUsabale = false;
 	}
 
+	/// <summary>
+	/// 初期設定
+	/// </summary>
+	void ProcessStart(){
+		systemTiming_g = SystemTiming.ProcessNow;
+		SceneManager.LoadScene ("Title", LoadSceneMode.Additive);
+	}
+		
 	/// <summary>
 	/// シーン管理
 	/// </summary>
 	void IsSceneManagement(){
 		switch (sceneNo_p) {
-		case sceneNo.Title:
-			SceneManager.LoadScene ("Title", LoadSceneMode.Additive);
+		case SceneNo.Title:
+			SceneManager.UnloadScene ("Title");
+			SceneManager.LoadScene ("Menu", LoadSceneMode.Additive);
+			sceneNo_p = SceneNo.Menu;
 			break;
-		case sceneNo.Loading:
-			SceneManager.LoadScene ("Loading",LoadSceneMode.Additive);
-			break;
-		case sceneNo.Menu:
-			SceneManager.LoadScene ("Menu",LoadSceneMode.Additive);
-			break;
-		case sceneNo.Strengthen:
-			SceneManager.LoadScene ("Strengthen",LoadSceneMode.Additive);
-			break;
-		case sceneNo.Main:
-			SceneManager.LoadScene ("Main",LoadSceneMode.Additive);
-			break;
-		case sceneNo.MultiMain:
-			SceneManager.LoadScene ("MultiMain",LoadSceneMode.Additive);
-			break;
-		case sceneNo.StageSelect:
-			SceneManager.LoadScene ("StageSelect",LoadSceneMode.Additive);
-			break;
-		case sceneNo.Clear:
-			SceneManager.LoadScene ("Clear",LoadSceneMode.Additive);
-			break;
-		case sceneNo.Over:
-			SceneManager.LoadScene ("Over",LoadSceneMode.Additive);
-			break;
-		}
-	}
-	void TestSceneMgr(){
-		if (InputMgr.fire6==true||Input.GetKeyDown(KeyCode.Space)) {
-			switch (sceneNo_p) {
-			case sceneNo.Title:
-				if (TitleMgr.titleSelectType_g == TitleMgr.TitleSelectType.Start ||
-				   TitleMgr.titleSelectType_g == TitleMgr.TitleSelectType.Continue)
-					sceneNo_p = sceneNo.Menu;
-				SceneManager.UnloadScene ("Title");
-				break;
-			case sceneNo.Loading:
-				SceneManager.UnloadScene ("Loading");
-				break;
-			case sceneNo.Menu:
-				if (MenuMgr.menuSelectType_g == MenuMgr.MenuSelectType.Main) {
-					sceneNo_p = sceneNo.Main;
-				} else if (MenuMgr.menuSelectType_g == MenuMgr.MenuSelectType.Multi) {
-					sceneNo_p = sceneNo.MultiMain;
-				} else if (MenuMgr.menuSelectType_g == MenuMgr.MenuSelectType.CharStrengthen) {
-					sceneNo_p = sceneNo.Strengthen;
-				} else if (MenuMgr.menuSelectType_g == MenuMgr.MenuSelectType.Title) {
-					sceneNo_p = sceneNo.Title;
-				}
-				SceneManager.UnloadScene ("Menu");
-				break;
-			case sceneNo.Strengthen:
-				sceneNo_p = sceneNo.Menu;
-				SceneManager.UnloadScene ("Strengthen");
-				break;
-			case sceneNo.Main:
-				sceneNo_p = sceneNo.StageSelect;
-				SceneManager.UnloadScene ("Main");
-				break;
-			case sceneNo.MultiMain:
-				sceneNo_p = sceneNo.Over;
-				SceneManager.UnloadScene ("MultiMain");
-				break;
-			case sceneNo.StageSelect:
-				sceneNo_p = sceneNo.Clear;
-				SceneManager.UnloadScene ("StageSelect");
-				break;
-			case sceneNo.Clear:
-				sceneNo_p = sceneNo.Menu;
-				SceneManager.UnloadScene ("Clear");
-				break;
-			case sceneNo.Over:
-				sceneNo_p = sceneNo.Menu;
-				SceneManager.UnloadScene ("Over");
-				break;
+		case SceneNo.Menu:
+			SceneManager.UnloadScene ("Menu");
+			switch (MenuMgr.menuSelectType_g) {
+				case MenuMgr.MenuSelectType.Main:
+					SceneManager.LoadScene ("Main", LoadSceneMode.Additive);
+					sceneNo_p = SceneNo.Main;
+					break;
+				case MenuMgr.MenuSelectType.Multi:
+					SceneManager.LoadScene ("MultiMain", LoadSceneMode.Additive);
+					sceneNo_p = SceneNo.MultiMain;
+					break;
+				case MenuMgr.MenuSelectType.CharStrengthen:
+					SceneManager.LoadScene ("Strengthen", LoadSceneMode.Additive);
+					sceneNo_p = SceneNo.Strengthen;
+					break;
+				case MenuMgr.MenuSelectType.Title:
+					SceneManager.LoadScene ("Title", LoadSceneMode.Additive);
+					sceneNo_p = SceneNo.Title;
+					break;
 			}
-				GlobalVariable.sceneMoveUsabale = true;
+			break;
+		case SceneNo.Strengthen:
+			SceneManager.UnloadScene ("Strengthen");
+			SceneManager.LoadScene ("Menu", LoadSceneMode.Additive);
+			sceneNo_p = SceneNo.Menu;
+			break;
+		case SceneNo.StageSelect:
+			SceneManager.LoadScene ("StageSelect", LoadSceneMode.Additive);
+			break;
+		case SceneNo.Main:
+			SceneManager.LoadScene ("Main", LoadSceneMode.Additive);
+			break;
+		case SceneNo.MultiMain:
+			SceneManager.LoadScene ("MultiMain", LoadSceneMode.Additive);
+			break;
+		case SceneNo.Clear:
+			SceneManager.LoadScene ("Clear", LoadSceneMode.Additive);
+			break;
+		case SceneNo.Over:
+			SceneManager.LoadScene ("Over", LoadSceneMode.Additive);
+			break;
+		/*case SceneNo.Loading:
+			SceneManager.LoadScene ("Loading", LoadSceneMode.Additive);
+			break;
+			*/
 		}
 	}
 }

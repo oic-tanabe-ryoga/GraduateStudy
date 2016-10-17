@@ -8,31 +8,32 @@ using System;
 
 public class TitleMgr : MonoBehaviour {
 	private enum TitleTiming{
-		ProcessingStart,
-		ProcessingNow,
-		ProcessingEnd,
+		ProcessStart,
+		ProcessNow,
+		ProcessEnd,
 	}TitleTiming titleTiming_p;
-	public enum TitleSelectType{
+	private enum TitleSelectType{
 		Start,
 		Continue,
 		End,
-	}public static TitleSelectType titleSelectType_g;
+	}TitleSelectType titleSelectType_p;
 	private bool canInputUsabale;
 	private TimeSpan allowTime=new TimeSpan(0,0,1);
 	private TimeSpan pastTime;
 	private DateTime reloadTime;
 	public static int testSaveData;
+
 	void Start () {
 		TitleInitialize ();
 		testSaveData=GameData.captureNo;
 	}
 	void Update () {
 		switch (titleTiming_p) {
-		case TitleTiming.ProcessingStart:
-			titleTiming_p = TitleTiming.ProcessingNow;
+		case TitleTiming.ProcessStart:
+			titleTiming_p = TitleTiming.ProcessNow;
 			break;
 
-		case TitleTiming.ProcessingNow:
+		case TitleTiming.ProcessNow:
 			if (canInputUsabale == true) {
 				TitleInput ();
 			} else {
@@ -42,7 +43,9 @@ public class TitleMgr : MonoBehaviour {
 			TestText ();
 			break;
 
-		case TitleTiming.ProcessingEnd:
+		case TitleTiming.ProcessEnd:
+			SetPlayerData ();
+			SystemMgr.sceneMoveUsabale = true;
 			break;
 		}
 	}
@@ -51,8 +54,8 @@ public class TitleMgr : MonoBehaviour {
 	/// タイトル初期化
 	/// </summary>
 	void TitleInitialize (){
-		titleTiming_p = TitleTiming.ProcessingStart;
-		titleSelectType_g = TitleSelectType.Start;
+		titleTiming_p = TitleTiming.ProcessStart;
+		titleSelectType_p = TitleSelectType.Start;
 		canInputUsabale = true;
 	}
 
@@ -82,44 +85,69 @@ public class TitleMgr : MonoBehaviour {
 		if (InputMgr.vertical <= -0.5f) {
 			canInputUsabale = false;
 			this.reloadTime = DateTime.Now;
-			switch (titleSelectType_g) {
+			switch (titleSelectType_p) {
 			case TitleSelectType.Start:
-				titleSelectType_g = TitleSelectType.Continue;
+				titleSelectType_p = TitleSelectType.Continue;
 				break;
 			case TitleSelectType.Continue:
-				titleSelectType_g = TitleSelectType.End;
+				titleSelectType_p = TitleSelectType.End;
 				break;
 			case TitleSelectType.End:
-				titleSelectType_g = TitleSelectType.Start;
+				titleSelectType_p = TitleSelectType.Start;
 				break;
 			}
-		}
+		} 
 		if (InputMgr.vertical >= 0.5f) {
 			canInputUsabale = false;
 			this.reloadTime = DateTime.Now;
-			switch (titleSelectType_g) {
+			switch (titleSelectType_p) {
 			case TitleSelectType.Start:
-				titleSelectType_g = TitleSelectType.End;
+				titleSelectType_p = TitleSelectType.End;
 				break;
 			case TitleSelectType.Continue:
-				titleSelectType_g = TitleSelectType.Start;
+				titleSelectType_p = TitleSelectType.Start;
 				break;
 			case TitleSelectType.End:
-				titleSelectType_g = TitleSelectType.Continue;
+				titleSelectType_p = TitleSelectType.Continue;
 				break;
+			}
+		}
+		if (InputMgr.fire6 == true || Input.GetKeyDown (KeyCode.Space)) {
+			if (titleSelectType_p == TitleSelectType.End) {
+				SystemMgr.systemTiming_g = SystemMgr.SystemTiming.ProcessEnd;
+			} else {
+				titleTiming_p = TitleTiming.ProcessEnd;
 			}
 		}
 		TestSaveData ();
 	}
 
 	/// <summary>
-	/// テスト用テキスト
+	/// プレイヤーデータのセット
+	/// </summary>
+	void SetPlayerData(){
+		switch (titleSelectType_p) {
+		case TitleSelectType.Start:
+			GameData.Reset ();
+			Debug.Log ("データ初期化");
+			break;
+		case TitleSelectType.Continue:
+			GameData.captureNo = TitleMgr.testSaveData;
+			GameData.Save ();
+			Debug.Log ("データロード");
+			break;
+		}
+	}
+
+	/// <summary>
+	/// テスト用
 	/// </summary>
 	void TestText(){
-		this.GetComponent<GUIText>().text = "TestText"+titleSelectType_g+"Test"+testSaveData;
+		this.GetComponent<GUIText>().text = "TestText"+titleSelectType_p+"Test"+testSaveData;
 	}
 	void TestSaveData(){
 		if (InputMgr.fire8)
 			testSaveData++;
 	}
+
 }
