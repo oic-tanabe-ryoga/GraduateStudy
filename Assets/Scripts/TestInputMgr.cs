@@ -16,11 +16,11 @@ public class TestInputMgr : MonoBehaviour {
 	private string lb = "\n";
 		
 	void Update () {
-		if (InputType_p == InputType.TypeA) {
-			InputTypeAText ();
-		} else if (InputType_p == InputType.TypeB) {
-			InputTypeBText ();
-		}
+			if (InputType_p == InputType.TypeA) {
+				InputTypeAText ();
+			} else if (InputType_p == InputType.TypeB) {
+				InputTypeBText ();
+			}
 	}
 
 	void InputTypeAText(){

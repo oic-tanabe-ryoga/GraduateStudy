@@ -18,6 +18,7 @@ public class TitleMgr : MonoBehaviour {
 		End,
 	}TitleSelectType titleSelectType_p;
 	private bool canInputUsabale;
+	private bool canSaving;
 	private TimeSpan allowTime=new TimeSpan(0,0,1);
 	private TimeSpan pastTime;
 	private DateTime reloadTime;
@@ -44,7 +45,10 @@ public class TitleMgr : MonoBehaviour {
 			break;
 
 		case TitleTiming.ProcessEnd:
-			SetPlayerData ();
+			if (canSaving == true) {
+				canSaving = false;
+				SetPlayerData ();
+			}
 			SystemMgr.sceneMoveUsabale = true;
 			break;
 		}
@@ -57,6 +61,8 @@ public class TitleMgr : MonoBehaviour {
 		titleTiming_p = TitleTiming.ProcessStart;
 		titleSelectType_p = TitleSelectType.Start;
 		canInputUsabale = true;
+		canSaving = true;
+		SystemMgr.loadBackBoradUsabale = false;
 	}
 
 	/// <summary>
@@ -118,6 +124,7 @@ public class TitleMgr : MonoBehaviour {
 			} else {
 				titleTiming_p = TitleTiming.ProcessEnd;
 			}
+			SystemMgr.loadBackBoradUsabale = true;
 		}
 		TestSaveData ();
 	}
@@ -149,5 +156,4 @@ public class TitleMgr : MonoBehaviour {
 		if (InputMgr.fire8)
 			testSaveData++;
 	}
-
 }

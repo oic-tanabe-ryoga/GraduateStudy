@@ -43,6 +43,7 @@ public class MenuMgr : MonoBehaviour {
 			TestText ();
 			break;
 		case MenuTiming.ProcessEnd:
+			//SystemMgr.TrueBack ();
 			SystemMgr.sceneMoveUsabale = true;
 			break;
 		}
@@ -55,6 +56,7 @@ public class MenuMgr : MonoBehaviour {
 		menuTiming_p = MenuTiming.ProcessStart;
 		menuSelectType_g = MenuSelectType.Main;
 		canInputUsabale = true;
+		SystemMgr.loadBackBoradUsabale = false;
 	}
 
 	/// <summary>
@@ -118,6 +120,7 @@ public class MenuMgr : MonoBehaviour {
 		}
 		if (InputMgr.fire6 == true || Input.GetKeyDown (KeyCode.Space)) {
 			menuTiming_p = MenuTiming.ProcessEnd;
+			SystemMgr.loadBackBoradUsabale = true;
 		}
 	}
 

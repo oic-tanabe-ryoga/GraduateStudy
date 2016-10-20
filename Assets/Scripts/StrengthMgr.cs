@@ -18,6 +18,7 @@ public class StrengthMgr : MonoBehaviour {
 	private int addStatus;
 
 	private bool canInputUsabale;
+	private bool canSaving;
 	private TimeSpan allowTime = new TimeSpan (0, 0, 1);
 	private TimeSpan pastTime;
 	private DateTime reloadTime;
@@ -48,12 +49,7 @@ public class StrengthMgr : MonoBehaviour {
 		SetPlayerStatus ();
 	}
 	void Start () {
-		strengthTiming_p = StrengthTiming.ProcessingStart;
-		selectingClass_p = SelectingClass.Sexual;
-		sexualType_p = SexualType.Male;
-		statusType_p = StatusType.HP;
-		canInputUsabale = true;
-		addStatus = 0;
+		StrengthInitialize ();
 	}
 
 	void Update () {
@@ -72,7 +68,7 @@ public class StrengthMgr : MonoBehaviour {
 					break;
 				case SelectingClass.AddControl:
 					if (InputMgr.fire7 == true) {
-						addStatus++;
+						StrengthgCalculation ();
 					}
 					break;
 				}
@@ -80,12 +76,18 @@ public class StrengthMgr : MonoBehaviour {
 				StrengthTimeControl ();
 				ReturnInitilize ();
 			}
+			if (canSaving == false)
+				canSaving = true;
 			InputType ();
 			TestText ();
 			break;
 		case StrengthTiming.ProcessingEnd:
-			SavingStrength ();
+			if (canSaving == true) {
+				SavingStrength ();
+				canSaving = false;
+			}
 			SystemMgr.sceneMoveUsabale = true;
+			SystemMgr.loadBackBoradUsabale = true;
 			break;
 		}
 	}
@@ -102,6 +104,20 @@ public class StrengthMgr : MonoBehaviour {
 		femaleAT = GameData.femalePlayerAttack;
 		femaleDF = GameData.femalePlayerDiffence;
 		femaleFG = GameData.femalePlayerFinisherGauge;
+	}
+
+	/// <summary>
+	/// 初期化
+	/// </summary>
+	void StrengthInitialize(){
+		strengthTiming_p = StrengthTiming.ProcessingStart;
+		selectingClass_p = SelectingClass.Sexual;
+		sexualType_p = SexualType.Male;
+		statusType_p = StatusType.HP;
+		canInputUsabale = true;
+		canSaving = true;
+		addStatus = 0;
+		SystemMgr.loadBackBoradUsabale = false;
 	}
 
 	/// <summary>
@@ -247,6 +263,13 @@ public class StrengthMgr : MonoBehaviour {
 	}
 
 	/// <summary>
+	/// 強化計算
+	/// </summary>
+	void StrengthgCalculation(){
+		addStatus++;
+	}
+
+	/// <summary>
 	/// 元の位置に戻ったときに初期化
 	/// </summary>
 	void ReturnInitilize(){
@@ -264,6 +287,9 @@ public class StrengthMgr : MonoBehaviour {
 			canInputUsabale = true;
 		}
 	}
+	/// <summary>
+	/// 入力操作
+	/// </summary>
 	void InputType(){
 		if (InputMgr.fire6 == true || Input.GetKeyDown (KeyCode.Space)) {
 			switch(selectingClass_p){
@@ -278,9 +304,12 @@ public class StrengthMgr : MonoBehaviour {
 				selectingClass_p = SelectingClass.AddControl;
 				break;
 			case SelectingClass.AddControl:
-				AddStatus ();
-				SavingStrength ();
-				ResetAddStatus ();
+				if (canSaving==true) {
+					AddStatus ();
+					SavingStrength ();
+					ResetAddStatus ();
+					canSaving = false;
+				}
 				selectingClass_p = SelectingClass.Sexual;
 				break;
 			}
@@ -314,6 +343,5 @@ public class StrengthMgr : MonoBehaviour {
 		"femaleAT = GameData.femalePlayerAttack"+femaleAT+"="+GameData.femalePlayerAttack+"\n"+
 		"femaleDF = GameData.femalePlayerDiffence"+femaleDF+"="+GameData.femalePlayerDiffence+"\n"+
 		"femaleFG = GameData.femalePlayerFinisherGauge"+femaleFG+"="+GameData.femalePlayerFinisherGauge+"\n";
-
 	}
 }
