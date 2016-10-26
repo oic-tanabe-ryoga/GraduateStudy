@@ -122,7 +122,7 @@
      <Compile Include="Assets\Scripts\Live2DViewer.cs" />
      <Compile Include="Assets\Scripts\LoadBack.cs" />
      <Compile Include="Assets\Scripts\LoadingSkin.cs" />
-     <Compile Include="Assets\Scripts\MainMgr.cs" />
+     <Compile Include="Assets\Scripts\MenuChar.cs" />
      <Compile Include="Assets\Scripts\MenuMgr.cs" />
      <Compile Include="Assets\Scripts\SavaData\Cript.cs" />
      <Compile Include="Assets\Scripts\SavaData\GameData.cs" />
@@ -130,6 +130,7 @@
      <Compile Include="Assets\Scripts\SavaData\SavableSingleton.cs" />
      <Compile Include="Assets\Scripts\SavaData\SingletonMonoBehaviour.cs" />
      <Compile Include="Assets\Scripts\SimpleModel.cs" />
+     <Compile Include="Assets\Scripts\SinglePlayMgr.cs" />
      <Compile Include="Assets\Scripts\SortingLayer.cs" />
      <Compile Include="Assets\Scripts\StageSelectMgr.cs" />
      <Compile Include="Assets\Scripts\StrengthMgr.cs" />

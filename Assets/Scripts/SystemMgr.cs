@@ -125,7 +125,17 @@ public class SystemMgr : MonoBehaviour {
 			}
 			break;
 		case SceneNo.Main:
-			SceneManager.LoadScene ("Main", LoadSceneMode.Additive);
+			SceneManager.UnloadScene ("Main");
+			switch (SinglePlayMgr.singleType_g) {
+			case SinglePlayMgr.SingleType.Clear:
+				SceneManager.LoadScene ("Clear", LoadSceneMode.Additive);
+				sceneNo_p = SceneNo.Clear;
+				break;
+			case SinglePlayMgr.SingleType.Over:
+				SceneManager.LoadScene ("Over", LoadSceneMode.Additive);
+				sceneNo_p = SceneNo.Over;
+				break;
+			}
 			break;
 		case SceneNo.MultiMain:
 			SceneManager.LoadScene ("MultiMain", LoadSceneMode.Additive);

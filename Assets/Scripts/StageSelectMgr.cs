@@ -16,16 +16,16 @@ public class StageSelectMgr : MonoBehaviour {
 		Sexual,
 		Stage,
 	}public static SelectingClass selectingClass_g;
-	private enum StageSelectType{
+	public enum StageSelectType{
 		Stage_1,
 		Stage_2,
 		Stage_3,
-	}StageSelectType stageSelectType_p;
-	private enum SelectSexual{
+	}public static StageSelectType stageSelectType_g;
+	public enum SelectSexual{
 		Title,
 		male,
 		female,
-	}SelectSexual selectSexual_p;
+	}public static SelectSexual selectSexual_g;
 	private int clearStageNo;
 	private bool canInputUsabale;
 	private TimeSpan allowTime=new TimeSpan(0,0,1);
@@ -67,7 +67,7 @@ public class StageSelectMgr : MonoBehaviour {
 		clearStageNo=GameData.captureNo;
 		selectingClass_g = SelectingClass.Sexual;
 		selectTiming_p = SelectTiming.ProcessStart;
-		stageSelectType_p = StageSelectType.Stage_1;
+		stageSelectType_g = StageSelectType.Stage_1;
 		SystemMgr.loadBackBoradUsabale = false;
 	}
 	/// <summary>
@@ -80,20 +80,20 @@ public class StageSelectMgr : MonoBehaviour {
 			this.reloadTime = DateTime.Now;
 			switch (selectingClass_g) {
 			case SelectingClass.Sexual:
-				if (selectSexual_p == SelectSexual.male)
-					selectSexual_p = SelectSexual.female;
-				else if (selectSexual_p == SelectSexual.female)
-					selectSexual_p = SelectSexual.Title;
-				else if (selectSexual_p == SelectSexual.Title)
-					selectSexual_p = SelectSexual.male;
+				if (selectSexual_g == SelectSexual.male)
+					selectSexual_g = SelectSexual.female;
+				else if (selectSexual_g == SelectSexual.female)
+					selectSexual_g = SelectSexual.Title;
+				else if (selectSexual_g == SelectSexual.Title)
+					selectSexual_g = SelectSexual.male;
 				break;
 			case SelectingClass.Stage:
-				if ((int)stageSelectType_p == clearStageNo)
-					stageSelectType_p = (StageSelectType)clearStageNo;
-				else if(stageSelectType_p ==StageSelectType.Stage_3)
-					stageSelectType_p = StageSelectType.Stage_3;
+				if ((int)stageSelectType_g == clearStageNo)
+					stageSelectType_g = (StageSelectType)clearStageNo;
+				else if(stageSelectType_g ==StageSelectType.Stage_3)
+					stageSelectType_g = StageSelectType.Stage_3;
 				else
-					stageSelectType_p++;
+					stageSelectType_g++;
 				break;
 			}
 		}
@@ -103,18 +103,18 @@ public class StageSelectMgr : MonoBehaviour {
 			this.reloadTime = DateTime.Now;
 			switch (selectingClass_g) {
 			case SelectingClass.Sexual:
-				if (selectSexual_p == SelectSexual.male)
-					selectSexual_p = SelectSexual.Title;
-				else if (selectSexual_p == SelectSexual.female)
-					selectSexual_p = SelectSexual.male;
-				else if (selectSexual_p == SelectSexual.Title)
-					selectSexual_p = SelectSexual.female;
+				if (selectSexual_g == SelectSexual.male)
+					selectSexual_g = SelectSexual.Title;
+				else if (selectSexual_g == SelectSexual.female)
+					selectSexual_g = SelectSexual.male;
+				else if (selectSexual_g == SelectSexual.Title)
+					selectSexual_g = SelectSexual.female;
 				break;
 			case SelectingClass.Stage:
-				if (stageSelectType_p == StageSelectType.Stage_1)
-					stageSelectType_p = StageSelectType.Stage_1;
+				if (stageSelectType_g == StageSelectType.Stage_1)
+					stageSelectType_g = StageSelectType.Stage_1;
 				else
-					stageSelectType_p--;
+					stageSelectType_g--;
 				break;
 			}
 		}
@@ -123,7 +123,7 @@ public class StageSelectMgr : MonoBehaviour {
 			this.reloadTime = DateTime.Now;
 			switch(selectingClass_g){
 			case SelectingClass.Sexual:
-				if (selectSexual_p == SelectSexual.Title) {
+				if (selectSexual_g == SelectSexual.Title) {
 					selectTiming_p = SelectTiming.ProcessEnd;
 					break;
 				}
@@ -166,7 +166,7 @@ public class StageSelectMgr : MonoBehaviour {
 	}
 	void TestText(){
 		this.GetComponent<GUIText>().text = "Select"+selectingClass_g+"\n"+
-			"SexualType"+selectSexual_p+"\n"+
-			"Stage"+stageSelectType_p;
+			"SexualType"+selectSexual_g+"\n"+
+			"Stage"+stageSelectType_g;
 	}
 }
