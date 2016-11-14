@@ -116,6 +116,11 @@
      <Compile Include="Assets\PhotonChatApi\ChatState.cs" />
      <Compile Include="Assets\PhotonChatApi\ChatUserStatus.cs" />
      <Compile Include="Assets\PhotonChatApi\IChatClientListener.cs" />
+     <Compile Include="Assets\Scripts\EnemyAttckEffect.cs" />
+     <Compile Include="Assets\Scripts\EnemyMgr.cs" />
+     <Compile Include="Assets\Scripts\EnemyMoveTest.cs" />
+     <Compile Include="Assets\Scripts\EnemyParent.cs" />
+     <Compile Include="Assets\Scripts\EnemyType1Move.cs" />
      <Compile Include="Assets\Scripts\GlobalVariable.cs" />
      <Compile Include="Assets\Scripts\InputMgr.cs" />
      <Compile Include="Assets\Scripts\Live2DView.cs" />
@@ -124,6 +129,7 @@
      <Compile Include="Assets\Scripts\LoadingSkin.cs" />
      <Compile Include="Assets\Scripts\MenuChar.cs" />
      <Compile Include="Assets\Scripts\MenuMgr.cs" />
+     <Compile Include="Assets\Scripts\PlayerMgr.cs" />
      <Compile Include="Assets\Scripts\SavaData\Cript.cs" />
      <Compile Include="Assets\Scripts\SavaData\GameData.cs" />
      <Compile Include="Assets\Scripts\SavaData\JsonMapper.cs" />
@@ -135,13 +141,16 @@
      <Compile Include="Assets\Scripts\StageSelectMgr.cs" />
      <Compile Include="Assets\Scripts\StrengthMgr.cs" />
      <Compile Include="Assets\Scripts\SystemMgr.cs" />
+     <Compile Include="Assets\Scripts\TestGameObjectPosition.cs" />
      <Compile Include="Assets\Scripts\TestInputMgr.cs" />
      <Compile Include="Assets\Scripts\TestPlayerMove.cs" />
      <Compile Include="Assets\Scripts\TitleMgr.cs" />
+     <Compile Include="Assets\Scripts\ViewMgr.cs" />
      <Compile Include="Assets\TestPlayer\AIPlayer.cs" />
      <Compile Include="Assets\TestPlayer\Boy1.cs" />
      <Compile Include="Assets\TestPlayer\Enemy.cs" />
      <Compile Include="Assets\TestPlayer\Player1.cs" />
+     <Compile Include="Assets\TestShardow.cs" />
      <None Include="Assets\Photon Unity Networking\link.xml" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-NormalAndAdd.shader" />
      <None Include="Assets\Plugins\Photon3Unity3D.xml" />

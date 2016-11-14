@@ -22,9 +22,9 @@ public class StageSelectMgr : MonoBehaviour {
 		Stage_3,
 	}public static StageSelectType stageSelectType_g;
 	public enum SelectSexual{
+		Male,
+		Female,
 		Title,
-		male,
-		female,
 	}public static SelectSexual selectSexual_g;
 	private int clearStageNo;
 	private bool canInputUsabale;
@@ -80,12 +80,12 @@ public class StageSelectMgr : MonoBehaviour {
 			this.reloadTime = DateTime.Now;
 			switch (selectingClass_g) {
 			case SelectingClass.Sexual:
-				if (selectSexual_g == SelectSexual.male)
-					selectSexual_g = SelectSexual.female;
-				else if (selectSexual_g == SelectSexual.female)
+				if (selectSexual_g == SelectSexual.Male)
+					selectSexual_g = SelectSexual.Female;
+				else if (selectSexual_g == SelectSexual.Female)
 					selectSexual_g = SelectSexual.Title;
 				else if (selectSexual_g == SelectSexual.Title)
-					selectSexual_g = SelectSexual.male;
+					selectSexual_g = SelectSexual.Male;
 				break;
 			case SelectingClass.Stage:
 				if ((int)stageSelectType_g == clearStageNo)
@@ -103,12 +103,12 @@ public class StageSelectMgr : MonoBehaviour {
 			this.reloadTime = DateTime.Now;
 			switch (selectingClass_g) {
 			case SelectingClass.Sexual:
-				if (selectSexual_g == SelectSexual.male)
+				if (selectSexual_g == SelectSexual.Male)
 					selectSexual_g = SelectSexual.Title;
-				else if (selectSexual_g == SelectSexual.female)
-					selectSexual_g = SelectSexual.male;
+				else if (selectSexual_g == SelectSexual.Female)
+					selectSexual_g = SelectSexual.Male;
 				else if (selectSexual_g == SelectSexual.Title)
-					selectSexual_g = SelectSexual.female;
+					selectSexual_g = SelectSexual.Female;
 				break;
 			case SelectingClass.Stage:
 				if (stageSelectType_g == StageSelectType.Stage_1)

@@ -25,7 +25,7 @@ public class SinglePlayMgr : MonoBehaviour {
 	private TimeSpan allowTime=new TimeSpan(0,0,1);
 	private TimeSpan pastTime;
 	private DateTime reloadTime;
-
+	private GameObject enemyMgr;
 
 	void Awake(){
 		stageNo = (int)StageSelectMgr.stageSelectType_g;
@@ -36,6 +36,7 @@ public class SinglePlayMgr : MonoBehaviour {
 		stageObj.transform.parent = this.gameObject.transform;
 		SingleInitialize ();
 		singleType_g = SingleType.None;
+		enemyMgr = GameObject.Find("EnemyMgr");
 	}
 	
 	void Update () {
@@ -78,6 +79,8 @@ public class SinglePlayMgr : MonoBehaviour {
 			mainTiming_p = MainTiming.ProcessEnd;
 			SystemMgr.loadBackBoradUsabale = true;
 			singleType_g = SingleType.Over;
+		} else if (InputMgr.fire5 == true) {
+			enemyMgr.GetComponent<EnemyMgr> ().EnemyBreak();
 		}
 	}
 	/// <summary>
@@ -103,6 +106,5 @@ public class SinglePlayMgr : MonoBehaviour {
 	/// タイトル選択肢移動
 	/// </summary>
 	void SingleInput(){
-		
 	}
 }
