@@ -14,7 +14,7 @@ public class EnemyMgr : MonoBehaviour {
 	private GameObject viewMgr;
 
 
-	void Start () {
+	void Awake () {
 		EnemyMgrInitialize ();
 		SetEnemy ();
 	}

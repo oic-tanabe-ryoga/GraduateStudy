@@ -11,7 +11,7 @@ public class PlayerMgr : MonoBehaviour {
 	private GameObject viewMgr;
 	private int playerNo;
 
-	void Start () {
+	void Awake () {
 		PlayerInitialize ();
 		SetPlayer ();
 	}

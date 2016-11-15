@@ -47,9 +47,11 @@ public class EnemyMoveTest : MonoBehaviour {
 	public float thisGameObjX=0.0f;
 	public float thisGameObjZ=0.0f;
 
+	public int TestMgrCount = 0;
 
 	void Start () {
 		EnemyInitialize ();
+		TestMgrCount = 0;
 	}
 
 	void Update () {
@@ -234,7 +236,7 @@ public class EnemyMoveTest : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// 攻撃の時間設定用
+	/// 攻撃エフェクト終了時に呼ぶ
 	/// </summary>
 	public void CanAttack(){
 		canAttack = true;
@@ -244,5 +246,9 @@ public class EnemyMoveTest : MonoBehaviour {
 	/// </summary>
 	public void Damage(int damegePoint){
 		enemyHp -= damegePoint;
+	}
+
+	public void Test(){
+		TestMgrCount++;
 	}
 }

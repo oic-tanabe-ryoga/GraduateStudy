@@ -67,6 +67,7 @@ public class SinglePlayMgr : MonoBehaviour {
 		canInputUsabale = true;
 		SystemMgr.loadBackBoradUsabale = false;
 	}
+
 	/// <summary>
 	/// テストシーン移行
 	/// </summary>
@@ -83,6 +84,7 @@ public class SinglePlayMgr : MonoBehaviour {
 			enemyMgr.GetComponent<EnemyMgr> ().EnemyBreak();
 		}
 	}
+
 	/// <summary>
 	/// 連打防止
 	/// </summary>

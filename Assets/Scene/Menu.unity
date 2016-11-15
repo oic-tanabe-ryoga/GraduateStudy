@@ -131,14 +131,14 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &738143631
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 738143630}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9c3e265020e48546945ff982daacd78, type: 3}
   m_Name: 
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 738143630}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35c9a07a180e96348b35d939d6353c7c, type: 3}
   m_Name: 
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 738143630}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 87c8e474fddfb3b43885301c3402fb1e, type: 3}
   m_Name: 
@@ -374,7 +374,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0.019607844}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -628,16 +628,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2089171084}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 87c8e474fddfb3b43885301c3402fb1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mocFile: {fileID: 4900000, guid: 98ab8fc6ec864d643b0aa3db13e59469, type: 3}
+  mocFile: {fileID: 4900000, guid: 2e5f73f5c38d8ed41905a054f342bea0, type: 3}
   textureFiles:
-  - {fileID: 2800000, guid: 1713590bd1958fa4195ba30acf13f7e5, type: 3}
-  - {fileID: 2800000, guid: b4aa9ec945262354f914b255e7c1baa0, type: 3}
-  - {fileID: 2800000, guid: 5751b0494b3c2d7418b1770105bb348e, type: 3}
+  - {fileID: 2800000, guid: 80c12c42e7ee3224f8fbe37db14e2d87, type: 3}
   motionFile: {fileID: 0}
 --- !u!114 &2089171087
 MonoBehaviour:
@@ -645,7 +643,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2089171084}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35c9a07a180e96348b35d939d6353c7c, type: 3}
   m_Name: 
@@ -660,7 +658,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2089171084}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9c3e265020e48546945ff982daacd78, type: 3}
   m_Name: 

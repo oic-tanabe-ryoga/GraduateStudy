@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b5d0411810f7524cb6daee342336f1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charNo: 0
 --- !u!1 &446606490
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,6 +577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyArray:
+  - {fileID: 119708, guid: 39a534f1ce862b242bed3cb0f6ac0dfb, type: 2}
   - {fileID: 119708, guid: 39a534f1ce862b242bed3cb0f6ac0dfb, type: 2}
   enemyCountMax: 10
 --- !u!4 &1654948800 stripped
