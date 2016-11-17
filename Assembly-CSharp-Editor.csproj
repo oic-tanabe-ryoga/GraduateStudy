@@ -59,20 +59,20 @@
      <Compile Include="Assets\Photon Unity Networking\Editor\PhotonNetwork\Views\PhotonRigidbody2DViewEditor.cs" />
      <Compile Include="Assets\Photon Unity Networking\Editor\PhotonNetwork\Views\PhotonRigidbodyViewEditor.cs" />
      <Compile Include="Assets\Photon Unity Networking\Editor\PhotonNetwork\Views\PhotonTransformViewEditor.cs" />
-     <None Include="Assets\Photon Unity Networking\link.xml" />
+     <None Include="Assets\Photon Unity Networking\readme.txt" />
+     <None Include="Assets\Live2D\Resources\shader\merged\Live2D-Masked-PremultipliedAlpha.shader" />
+     <None Include="Assets\Live2D\Resources\shader\merged\Live2D-PremultipliedAlpha.shader" />
+     <None Include="Assets\Live2D\Resources\shader\Live2D-SetupMask.shader" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-NormalAndAdd.shader" />
      <None Include="Assets\Plugins\Photon3Unity3D.xml" />
-     <None Include="Assets\Plugins\release_history.txt" />
-     <None Include="Assets\Live2D\Resources\shader\merged\Live2D.shader" />
-     <None Include="Assets\Live2D\Resources\shader\Live2D-SetupMask.shader" />
-     <None Include="Assets\Live2D\Resources\shader\merged\Live2D-Masked-PremultipliedAlpha.shader" />
-     <None Include="Assets\Live2D\Resources\shader\merged\Live2D-NormalAndAddMasked.shader" />
-     <None Include="Assets\Live2D\Resources\shader\merged\Live2D-Mult.shader" />
-     <None Include="Assets\Photon Unity Networking\readme.txt" />
-     <None Include="Assets\Live2D\Resources\shader\merged\Live2D-PremultipliedAlpha.shader" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-Masked.shader" />
+     <None Include="Assets\Live2D\Resources\shader\merged\Live2D-Mult.shader" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-MultMasked.shader" />
+     <None Include="Assets\Live2D\Resources\shader\merged\Live2D.shader" />
+     <None Include="Assets\Plugins\release_history.txt" />
+     <None Include="Assets\Photon Unity Networking\link.xml" />
      <None Include="Assets\Photon Unity Networking\changelog.txt" />
+     <None Include="Assets\Live2D\Resources\shader\merged\Live2D-NormalAndAddMasked.shader" />
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
@@ -98,19 +98,10 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll</HintPath>
  </Reference>
  <Reference Include="Live2DUnity">
- <HintPath>C:/Users/14del/Desktop/GraduateStudy/GraduateStudy/Assets/Live2D/Live2DUnity.dll</HintPath>
- </Reference>
- <Reference Include="Newtonsoft.Json">
- <HintPath>C:/Users/14del/Desktop/GraduateStudy/GraduateStudy/Assets/Photon Unity Networking/Editor/PhotonNetwork/Newtonsoft.Json.dll</HintPath>
- </Reference>
- <Reference Include="Photon3Unity3D">
- <HintPath>C:/Users/14del/Desktop/GraduateStudy/GraduateStudy/Assets/Plugins/Photon3Unity3D.dll</HintPath>
- </Reference>
- <Reference Include="websocket-sharp">
- <HintPath>C:/Users/14del/Desktop/GraduateStudy/GraduateStudy/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
+ <HintPath>C:/Users/1514216/Desktop/GraduateStudy/GraduateStudy/Assets/Live2D/Live2DUnity.dll</HintPath>
  </Reference>
  <Reference Include="LitJson">
- <HintPath>C:/Users/14del/Desktop/GraduateStudy/GraduateStudy/Assets/Scripts/SavaData/LitJson.dll</HintPath>
+ <HintPath>C:/Users/1514216/Desktop/GraduateStudy/GraduateStudy/Assets/Scripts/SavaData/LitJson.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
