@@ -150,6 +150,7 @@
      <Compile Include="Assets\TestPlayer\Boy1.cs" />
      <Compile Include="Assets\TestPlayer\Enemy.cs" />
      <Compile Include="Assets\TestPlayer\Player1.cs" />
+     <Compile Include="Assets\TestPlayer\TestAnimator\Player_Animation_Management.cs" />
      <Compile Include="Assets\TestShardow.cs" />
      <None Include="Assets\Photon Unity Networking\readme.txt" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-Masked-PremultipliedAlpha.shader" />
