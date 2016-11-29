@@ -11,10 +11,16 @@ public class Player_Animation_Management : MonoBehaviour {
 
 	TestPlayerMove playerAnimation;
 
+	//メンバー変数
+	[SerializeField]
 	private bool playerStand;
+	[SerializeField]
 	private bool playerMoving;
+	[SerializeField]
 	private bool playerHit;
+	[SerializeField]
 	private bool playerCreate;
+	[SerializeField]
 	private bool playerAttack;
 
 	//プロパティ
@@ -58,7 +64,9 @@ public class Player_Animation_Management : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		/// <summary>
+		/// playerStatus_pを参照して、それに応じてAnimatorのパラメーターを管理する。
+		/// </summary>
 		switch(playerAnimation.playerStatus_p){
 
 		case TestPlayerMove.playerStatus.Stand:
@@ -98,6 +106,10 @@ public class Player_Animation_Management : MonoBehaviour {
 
 		}
 	}
+
+	/// <summary>
+	/// Animatorのパラメーターにメンバー変数を反映させるメソッド。
+	/// </summary>
 	public void AnimatorSet(){
 		GetComponent<Animator> ().SetBool ("PlayerStand", playerStand);
 		GetComponent<Animator> ().SetBool ("PlayerMoving", playerMoving);
